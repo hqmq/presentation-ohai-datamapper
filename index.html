@@ -20,6 +20,12 @@
     <!-- For syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
 
+    <style>
+      .reveal pre {
+        box-shadow: none;
+      }
+    </style>
+
     <!-- If the query includes 'print-pdf', use the PDF print sheet -->
     <script>
       document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
@@ -67,6 +73,33 @@
             Why is it broken? Because we don't persist information about course records, so we have to iterate through every game to determine who holds records and hand out points.
             Dynamically assigning points this way costs ~3sec for a database of 26 players and 24 games...
           </aside>
+        </section>
+
+        <section>
+          <section>
+            <pre>
+              <code class="ruby">
+                class CourseRecord
+                  ...
+                end
+              </code>
+            </pre>
+            <aside class="notes">
+              So what would it take to make it work?
+            </aside>
+          </section>
+          <section>
+            <pre>
+              <code class="ruby">
+                module UpdateRecordsOnCreate
+                  extend ActiveSupport::Concern
+                  included do
+                    after_save :recalculate_records
+                  end
+                end
+              </code>
+            </pre>
+          </section>
         </section>
 
         <section>
