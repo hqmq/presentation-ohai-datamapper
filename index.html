@@ -77,14 +77,31 @@
         <section>
           <h1>Layer</h1>
           <h1>Box + Direction</h1>
+          <aside class="notes">
+            Definition: A Layer is a box with directional dependency.
+          </aside>
         </section>
 
         <section>
           <img src="images/spaghetti.png" />
+          <aside class="notes">
+            If you raise the level of abstraction, but all the boxes still talk to eachother we can quickly run into complexity problems.
+          </aside>
         </section>
 
         <section>
           <img src="images/layers.png" />
+          <aside class="notes">
+            We can put a lot more things into this diagram before it gets confusing.
+          </aside>
+        </section>
+
+        <section>
+          <h1>Example 1</h1>
+          <h2>New Feature</h2>
+          <aside class="notes">
+            If you are thinking about changing the structure of an application it is often easier to try it out on a new feature than than refactoring an existing feature.
+          </aside>
         </section>
 
         <section>
@@ -108,6 +125,26 @@
         </section>
 
         <section>
+          <h1>Example 1</h1>
+          <h2>Persisted Course Records</h2>
+          <aside class="notes">
+            Protip: Pick a slice as small as possible.
+          </aside>
+        </section>
+
+        <section>
+          <section>
+            <pre>
+              <code class="ruby">
+                class CreateCourseRecords < ActiveRecord::Migration
+                  ...
+                end
+              </code>
+            </pre>
+            <aside class="notes">
+              So what would it take to make it work within our application? A Migration...
+            </aside>
+          </section>
           <section>
             <pre>
               <code class="ruby">
@@ -117,7 +154,7 @@
               </code>
             </pre>
             <aside class="notes">
-              So what would it take to make it work?
+              A model
             </aside>
           </section>
           <section>
@@ -131,6 +168,33 @@
                 end
               </code>
             </pre>
+            <aside class="notes">
+              Some sort of observer to recalculate records when new games are created.
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <pre>
+              <code class="ruby">
+                require 'sinatra'
+
+                post '/game.json' do
+                  ...calculate records...
+                end
+
+                get '/:course_id/records.json' do
+
+                end
+              </code>
+            </pre>
+            <aside class="notes">
+              So what would it take to make it work as a new service? A Sinatra app...
+            </aside>
+          </section>
+          <section>
+            <h2>+ All the stuff we mentioned before</h2>
           </section>
         </section>
 
