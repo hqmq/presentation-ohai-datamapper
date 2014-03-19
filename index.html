@@ -61,17 +61,24 @@
           <h4>http://www.confreaks.com/videos/2350-mwrc2013-component-based-architectures-in-ruby-and-rails</h4>
         </section>
 
-        <section>
+        <section data-transition="fade">
           <h2>Stephen's List</h2>
           <ol>
-            <li>The One App</li>
-            <li>The Modularized App</li>
-            <li>The Gem Component App</li>
-            <li>The Rails Component App</li>
-            <li>The Service Oriented App</li>
-            <li>The eco-system App</li>
-            <li>The HTTP SOA App</li>
+            <li>One App</li>
+            <li>Modules</li>
+            <li>Gems<span class="fragment"> => Local Gems</span></li>
+            <li>Rails Engines</li>
+            <li>Looser Coupling<span class="fragment"> => Domain Objects</span></li>
+            <li>Services<span class="fragment"> => Service Objects</span></li>
+            <li>eco-system<span class="fragment"> => Published Gems</span></li>
+            <li>HTTP SOA</li>
           </ol>
+          <aside class="notes">
+            Gems => Local Gems
+            Looser Coupling => Domain Objects => Narrow API
+            Services => Service Objects
+            Eco-System => Published Gem => Collection of Gems/Libraries useful across applications
+          </aside>
         </section>
 
         <section>
@@ -196,6 +203,28 @@
           <section>
             <h2>+ All the stuff we mentioned before</h2>
           </section>
+        </section>
+
+         <section>
+          <h1>Layer</h1>
+          <h1>Box + Direction</h1>
+          <aside class="notes">
+            Definition: A Layer is a box with directional dependency.
+          </aside>
+        </section>
+
+        <section>
+          <img src="images/spaghetti.png" />
+          <aside class="notes">
+            If you raise the level of abstraction, but all the boxes still talk to eachother we can quickly run into complexity problems.
+          </aside>
+        </section>
+
+        <section>
+          <img src="images/layers.png" />
+          <aside class="notes">
+            We can put a lot more things into this diagram before it gets confusing.
+          </aside>
         </section>
 
       </div>
